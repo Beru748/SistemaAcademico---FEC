@@ -17,16 +17,19 @@ public class App {
 
     //Metodo para mostrar el menu principal
     public void mostrarMenu(){
-        System.out.println("1. Gestion de estudiantes.");
-        System.out.println("2. Gestion de asignaturas.");
-        System.out.println("3. Salir.");
+        System.out.println("====================================================");
+        System.out.println("| |                MENU PRINCIPAL                | |");
+        System.out.println("====================================================");
+        System.out.println("| | 1. Gestion de estudiantes.                   | |");
+        System.out.println("| | 2. Gestion de asignaturas.                   | |");
+        System.out.println("| | 3. Salir.                                    | |");
+        System.out.println("====================================================");
         System.out.println("Escoga una opcion: ");
         int opcion = sc.nextInt();
 
         do{
             switch (opcion) {
                 case 1:
-                    System.out.println("Menu de Estudiantes");
                     menuEstudiante();
                     break;
                 case 2: 
@@ -45,12 +48,16 @@ public class App {
 
     //Metodo para mostrar el menu de los estudiantes
     public void menuEstudiante(){
-        System.out.println("1. Registrar estudiante.");
-        System.out.println("2. Listar estudiante.");
-        System.out.println("3. Buscar estudiante.");
-        System.out.println("4. Actualizar informacion del estudiante.");
-        System.out.println("5. Eliminar estudiante.");
-        System.out.println("6. Salir.");
+        System.out.println("====================================================");
+        System.out.println("| |             MENU DE ESTUDIANTES              | |");
+        System.out.println("====================================================");
+        System.out.println("| | 1. Registrar estudiante.                     | |");
+        System.out.println("| | 2. Listar estudiante.                        | |");
+        System.out.println("| | 3. Buscar estudiante.                        | |");
+        System.out.println("| | 4. Actualizar informacion del estudiante.    | |");
+        System.out.println("| | 5. Eliminar estudiante.                      | |");
+        System.out.println("| | 6. Salir.                                    | |");
+        System.out.println("====================================================");
         System.out.println("Escoga una opcion: ");
         int opcionE = sc.nextInt();
 
@@ -83,15 +90,34 @@ public class App {
     }
 
     //Metodos para el CRUD de Estudiantes
-    //les dejo las plantillas de los metodos aunque si gustan pueden cambiarlos como mejor les paresca
 
-/* public void registrarEstudiante(){
+    public void registrarEstudiante(){
+        System.out.println("====================================================");
+        System.out.println("| |          REGISTRO DE ESTUDIANTE              | |");
+        System.out.println("====================================================");
+        sc.nextLine();
+
+        System.out.println("| | Cedula: ");
+        String cedula = sc.nextLine();
+
+        System.out.println("| | Nombre: ");
+        String nombre = sc.nextLine();
+
+        System.out.println("| | Apellido: ");
+        String apellido = sc.nextLine();
+
+        System.out.println("| | Correo: ");
+        String correo = sc.nextLine();
+
+        System.out.println("| | Telefono: ");
+        String telefono = sc.nextLine();
+
+        System.out.println("| | Carrera: ");
+        String carrera = sc.nextLine();
     }
-
+/* 
     public ArrayList<Estudiante> listarEstudiantes(){
     }
-
-    //el estudiante se va a buscar el numero de cedula o como usted prefiera :)
 
     public Estudiante buscarPorCc(){
     }
@@ -99,10 +125,6 @@ public class App {
     public boolean actualizarEstudiante(){
     }
 
-    //Ojo que es solo cambiarlo de estado, no eliminarlo literalmente.
-    //lo que se puede hacer es un arraylist para guardar los eliminados y verlos cuando uno quiera
-
     public boolean eliminarEstudiante(){
-    }
-    */
+    }*/
 }
