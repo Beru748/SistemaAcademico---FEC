@@ -18,6 +18,8 @@ public class Main {
 
     public static void main(String[] args) {
         registrarNota();
+        listarNotas();
+        Nota nota = buscarNota("codigoEst", "codigoAsig");
 }
     
     public static void registrarNota() {
@@ -63,6 +65,22 @@ public class Main {
         }
     }
 
+    return null;
+}
+    
+    public static void listarNotas() {
+    for (Nota n : listaNotas) {
+        System.out.println(n);
+    }
+}
+
+   public static Nota buscarNota(String codigoEst, String codigoAsig) {
+    for (Nota n : listaNotas) {
+        if (n.getEstudiante().getCodigo().equals(codigoEst)
+                && n.getAsignatura().getCodigo().equals(codigoAsig)) {
+            return n;
+        }
+    }
     return null;
 }
 }
