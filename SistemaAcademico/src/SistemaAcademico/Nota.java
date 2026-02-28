@@ -12,11 +12,21 @@ public class Nota {
     private Estudiante estudiante;
     private Asignatura asignatura;
     private double valor;
+    private String periodo;
 
-    public Nota(Estudiante estudiante, Asignatura asignatura, double valor) {
+    public Nota(Estudiante estudiante, Asignatura asignatura, double valor, String periodo) {
         this.estudiante = estudiante;
         this.asignatura = asignatura;
         this.valor = valor;
+        this.periodo = periodo;
+    }
+
+    public String getPeriodo() {
+        return periodo;
+    }
+
+    public void setPeriodo(String periodo) {
+        this.periodo = periodo;
     }
 
     public Estudiante getEstudiante() {
@@ -40,6 +50,7 @@ public class Nota {
         return "Nota{" +
                 "estudiante=" + estudiante.getNombre() +
                 ", asignatura=" + asignatura.getNombre() +
+                ", periodo=" + periodo +
                 ", valor=" + valor +
                 '}';
     }
