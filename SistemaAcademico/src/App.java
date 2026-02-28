@@ -14,7 +14,8 @@ public class App {
     //Metodo Principal
     public static void main(String[] args) throws Exception {
       registrarNota();
-        
+      listarNotas();
+      Nota nota = buscarNota("codigoEst", "codigoAsig");
     }
 
     //Metodos para la gestion de la informacio de la universidad
@@ -241,5 +242,21 @@ public class App {
                 " para " + estudiante.getNombre() +
                 " = " + definitiva);
     }
+}
+    
+    public static void listarNotas() {
+    for (Nota n : listaNotas) {
+        System.out.println(n);
+    }
+}
+
+   public static Nota buscarNota(String codigoEst, String codigoAsig) {
+    for (Nota n : listaNotas) {
+        if (n.getEstudiante().getCodigo().equals(codigoEst)
+                && n.getAsignatura().getCodigo().equals(codigoAsig)) {
+            return n;
+        }
+    }
+    return null;
 }
 }
