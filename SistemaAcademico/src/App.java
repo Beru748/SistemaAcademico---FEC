@@ -16,6 +16,7 @@ public class App {
       registrarNota();
       listarNotas();
       Nota nota = buscarNota("codigoEst", "codigoAsig");
+      actualizarNota();
     }
 
     //Metodos para la gestion de la informacio de la universidad
@@ -258,5 +259,26 @@ public class App {
         }
     }
     return null;
+}
+   
+   public static void actualizarNota() {
+    Scanner sc = new Scanner(System.in);
+
+    System.out.print("Codigo estudiante: ");
+    String codigoEst = sc.nextLine();
+
+    System.out.print("Codigo asignatura: ");
+    String codigoAsig = sc.nextLine();
+
+    Nota nota = buscarNota(codigoEst, codigoAsig);
+
+    if (nota != null) {
+        System.out.print("Nueva nota: ");
+        double nuevaNota = sc.nextDouble();
+        nota.setValor(nuevaNota);
+        System.out.println("Nota actualizada.");
+    } else {
+        System.out.println("Nota no encontrada.");
+    }
 }
 }
