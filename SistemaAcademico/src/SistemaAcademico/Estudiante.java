@@ -57,4 +57,10 @@ public class Estudiante {
         this.Semestre = Semestre;
 
     }
+
+    @Override
+    public String toString() {
+        return ",Codigo: " + Codigo + ",Nombre: " + Nombre + ",Apellido: " + Apellido +
+                ",Edad: " + Edad + ",Semestre: " + Semestre;
+    }
 }
