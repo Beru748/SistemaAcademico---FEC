@@ -9,20 +9,16 @@ package SistemaAcademico;
  * @author COMPUMAX
  */
 public class Nota {
+    private Estudiante estudiante;
+    private Asignatura asignatura;
     private double valor;
     private String periodo;
 
-    public Nota(double valor, String periodo) {
+    public Nota(Estudiante estudiante, Asignatura asignatura, double valor, String periodo) {
+        this.estudiante = estudiante;
+        this.asignatura = asignatura;
         this.valor = valor;
         this.periodo = periodo;
-    }
-
-    public double getValor() {
-        return valor;
-    }
-
-    public void setValor(double valor) {
-        this.valor = valor;
     }
 
     public String getPeriodo() {
@@ -33,10 +29,30 @@ public class Nota {
         this.periodo = periodo;
     }
 
+    public Estudiante getEstudiante() {
+        return estudiante;
+    }
+
+    public Asignatura getAsignatura() {
+        return asignatura;
+    }
+
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+
     @Override
     public String toString() {
-        return "Nota{" + "valor=" + valor + ", periodo=" + periodo + '}';
+        return "Nota{" +
+                "estudiante=" + estudiante.getNombre() +
+                ", asignatura=" + asignatura.getNombre() +
+                ", periodo=" + periodo +
+                ", valor=" + valor +
+                '}';
     }
-    
     
 }
