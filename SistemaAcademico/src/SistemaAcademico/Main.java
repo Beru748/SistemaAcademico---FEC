@@ -20,6 +20,7 @@ public class Main {
         registrarNota();
         listarNotas();
         Nota nota = buscarNota("codigoEst", "codigoAsig");
+        actualizarNota();
 }
     
     public static void registrarNota() {
@@ -82,5 +83,26 @@ public class Main {
         }
     }
     return null;
+}
+   
+   public static void actualizarNota() {
+    Scanner sc = new Scanner(System.in);
+
+    System.out.print("Codigo estudiante: ");
+    String codigoEst = sc.nextLine();
+
+    System.out.print("Codigo asignatura: ");
+    String codigoAsig = sc.nextLine();
+
+    Nota nota = buscarNota(codigoEst, codigoAsig);
+
+    if (nota != null) {
+        System.out.print("Nueva nota: ");
+        double nuevaNota = sc.nextDouble();
+        nota.setValor(nuevaNota);
+        System.out.println("Nota actualizada.");
+    } else {
+        System.out.println("Nota no encontrada.");
+    }
 }
 }
