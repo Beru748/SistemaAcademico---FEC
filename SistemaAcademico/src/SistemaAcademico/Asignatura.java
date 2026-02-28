@@ -9,8 +9,12 @@ package SistemaAcademico;
  * @author COMPUMAX
  */
 public class Asignatura {
-    private String nombre;
-    private String codigo;
-    private String docente;
-    private int creditos;
+    private String Nombre;
+    private String Codigo;
+    private String Docente;
+    private int Creditos;
+
+    public Asignatura(String Nombre, String Codigo, String Docente, int Creditos ){
+
+    }
 }
