@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -24,7 +25,7 @@ public class App {
         System.out.println("| | 2. Gestion de asignaturas.                   | |");
         System.out.println("| | 3. Salir.                                    | |");
         System.out.println("====================================================");
-        System.out.println("Escoga una opcion: ");
+        System.out.println("Escoja una opcion: ");
         int opcion = sc.nextInt();
 
         do{
@@ -58,7 +59,7 @@ public class App {
         System.out.println("| | 5. Eliminar estudiante.                      | |");
         System.out.println("| | 6. Salir.                                    | |");
         System.out.println("====================================================");
-        System.out.println("Escoga una opcion: ");
+        System.out.println("Escoja una opcion: ");
         int opcionE = sc.nextInt();
 
         do{
@@ -127,4 +128,49 @@ public class App {
 
     public boolean eliminarEstudiante(){
     }*/
+
+
+    public void menuAsignatura(){
+        System.out.println("==========================================================");
+        System.out.println("                      MENU ASIGNATURA                     ");
+        System.out.println("==========================================================");
+        System.out.println("1. Registrar Asignatura");
+        System.out.println("2. Listar Asignatura");
+        System.out.println("3. Buscar Asignatura");
+        System.out.println("4. Actutalozar Asignatura");
+        System.out.println("5. Eliminar Asignatura");
+        System.out.println("6. Salir");
+        System.out.println("==========================================================");
+        System.out.println("Escoja una opcion");
+        int opcionA = sc.nextInt();
+
+        do{
+            switch (opcionA){
+                case 1:
+                    System.out.println("");
+                    break;
+                case 2:
+                    System.out.println("");
+                    break;
+                case 3:
+                    System.out.println("");
+                    break;
+                case 4:
+                    System.out.println("");
+                    break;
+                case 5:
+                    System.out.println("");
+                    break;
+                case 6:
+                    System.out.println("Saliendo... Gracias por su tiempo :)");
+                    break;
+
+                default:
+                    System.out.println("La opcion es invalida. Intente nuevamente.");
+                    break;
+            }
+        }while(opcionA != 6);
+
+
+    }
 }
