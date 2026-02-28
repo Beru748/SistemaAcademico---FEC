@@ -159,7 +159,7 @@ public class App {
                     buscarAsignatura();
                     break;
                 case 4:
-                    System.out.println("");
+                    actualizarAsignatura();
                     break;
                 case 5:
                     System.out.println("");
@@ -176,6 +176,7 @@ public class App {
     }
 
     //Metodos para el CRUD de Asignatura
+    //Metodo para registrar asignatura
     public void registrarAsignatura() {
         System.out.println("==========================================================");
         System.out.println("                    REGISTRO ASIGNATURA                   ");
@@ -201,6 +202,7 @@ public class App {
 
     }
 
+    //Metodo para listar asignatura
     public void ListarAsignatura() {
 
         System.out.println("==========================================================");
@@ -214,12 +216,12 @@ public class App {
 
         }
     }
-
+    //Metodo para buscar asignatura
     public void buscarAsignatura() {
         System.out.println("==========================================================");
         System.out.println("                        BUSCAR ASIGNATURA                 ");
         System.out.println("==========================================================");
-        System.out.println("INGRESE EL CODIGO DE LA ASIGNATURA QUE DESEA BUSCAR: ");
+        System.out.println("Ingrese el codigo que desea buscar: ");
         String codigo = sc.nextLine();
         boolean encontrada = false;
 
@@ -234,10 +236,57 @@ public class App {
             }
         }
         if (!encontrada) {
-            System.out.println("NO SE ENCONTRO NINGUNA ASIGNATURA CON CODIGO: "+ codigo);
+            System.out.println("No se encontro ninguna asignatura con codigo: "+ codigo);
         }
 
     }
+    //Metodo para actualizar asignatura
+    public void actualizarAsignatura(){
+        System.out.println("==========================================================");
+        System.out.println(" ACTUALIZAR ASIGNATURA");
+        System.out.println("==========================================================");
+        System.out.println("Ingrese el codigo de la asignatura que desea editar: ");
+        String codigo = sc.nextLine();
+        boolean actualizada= false;
+
+        for(Asignatura a :listaAsignaturas){
+            if(a.getCodigo().equalsIgnoreCase(codigo)) {
+                System.out.println("Asignatura encontrada:" + a.getNombre());
+
+                System.out.println("Nuevo Nombre: ");
+                a.setNombre(sc.nextLine());
+                System.out.println("Nuevo Docente: ");
+                a.setDocente(sc.nextLine());
+                System.out.println("Nuevos Creditos");
+                a.setCreditos(sc.nextInt());
+                sc.nextLine();
+
+                System.out.println("Asignatura actualizada correctamente");
+                actualizada = true;
+                break;
+            }
+
+        }
+        if(!actualizada){
+            System.out.print("No se encontro ninguna asignatura con codigo: "+ codigo);
+        }
+    }
+
+    public void eliminarAsignatura(){
+        System.out.print("==========================================================");
+        System.out.print("                   ELIMINAR ASIGNATURA"                    );
+        System.out.print("==========================================================");
+        String codigo=sc.nextLine();
+        boolean eliminado= listaAsignaturas.removeIf(a->a.getCodigo().equalsIgnoreCase(codigo));
+        if(eliminado){
+            System.out.print("Asignatura eliminada con exito");
+        }else{
+            System.out.print("No se encontro ninguna asignatura con ese codigo");
+        }
+
+    }
+
+
 }
 
 
