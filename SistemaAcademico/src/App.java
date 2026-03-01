@@ -343,13 +343,14 @@ public class App {
         }
     }
     //Metodo para buscar asignatura
-    public void buscarAsignatura() {
+    public Asignatura buscarAsignatura() {
         System.out.println("==========================================================");
         System.out.println("                        BUSCAR ASIGNATURA                 ");
         System.out.println("==========================================================");
+        sc.nextLine();
         System.out.println("Ingrese el codigo que desea buscar: ");
         String codigo = sc.nextLine();
-        boolean encontrada = false;
+
 
         for (Asignatura a : listaAsignaturas) {
             if (a.getCodigo().equalsIgnoreCase(codigo)) {
@@ -357,13 +358,13 @@ public class App {
                 System.out.println("Nombre    : " + a.getNombre());
                 System.out.println("Docente   : " + a.getDocente());
                 System.out.println("Creditos  : " + a.getCreditos());
-                encontrada = true;
-                break;
+                return a;
+
             }
         }
-        if (!encontrada) {
+
             System.out.println("No se encontro ninguna asignatura con codigo: "+ codigo);
-        }
+            return null;
 
     }
     //Metodo para actualizar asignatura
