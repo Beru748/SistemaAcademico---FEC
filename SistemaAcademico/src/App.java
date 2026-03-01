@@ -289,24 +289,26 @@ public class App {
 
                             Metodo para mostrar el menu y el CRUD de las asignatura
 
-=======================================================================================================*/   
+=======================================================================================================*/
 
     public static void menuAsignatura() {
-        System.out.println("==========================================================");
-        System.out.println("                      MENU ASIGNATURA                     ");
-        System.out.println("==========================================================");
-        System.out.println("1. Registrar Asignatura");
-        System.out.println("2. Listar Asignatura");
-        System.out.println("3. Buscar Asignatura");
-        System.out.println("4. Actualizar Asignatura");
-        System.out.println("5. Eliminar Asignatura");
-        System.out.println("6. Salir");
-        System.out.println("==========================================================");
-        System.out.println("Escoja una opcion");
-        Scanner sc = new Scanner(System.in);
-        int opcionA = sc.nextInt();
-
+        int opcionA;
         do {
+            System.out.println("\n==========================================================");
+            System.out.println("                      MENU ASIGNATURA                     ");
+            System.out.println("==========================================================");
+            System.out.println("1. Registrar Asignatura");
+            System.out.println("2. Listar Asignatura");
+            System.out.println("3. Buscar Asignatura");
+            System.out.println("4. Actualizar Asignatura");
+            System.out.println("5. Eliminar Asignatura");
+            System.out.println("6. Volver al Menú Principal");
+            System.out.println("==========================================================");
+            System.out.print("Escoja una opcion: ");
+
+            opcionA = sc.nextInt();
+            sc.nextLine();
+
             switch (opcionA) {
                 case 1:
                     registrarAsignatura();
@@ -324,9 +326,8 @@ public class App {
                     eliminarAsignatura();
                     break;
                 case 6:
-                    System.out.println("Saliendo... Gracias por su tiempo :)");
+                    System.out.println("Regresando al menú principal...");
                     break;
-
                 default:
                     System.out.println("La opcion es invalida. Intente nuevamente.");
                     break;
@@ -337,43 +338,59 @@ public class App {
     //Metodo para registrar asignatura
 
     public static void registrarAsignatura() {
-        System.out.println("==========================================================");
-        System.out.println("                    REGISTRO ASIGNATURA                   ");
-        System.out.println("==========================================================");
-        Scanner sc = new Scanner(System.in);
-        sc.nextLine();
+        String respuesta;
+        do {
+            System.out.println("\n==========================================================");
+            System.out.println("                    REGISTRO ASIGNATURA                   ");
+            System.out.println("==========================================================");
 
-        System.out.println("| | Nombre: ");
-        String nombre = sc.nextLine();
+            System.out.print("| Nombre: ");
+            String nombre = sc.nextLine();
 
-        System.out.println("| | Codigo: ");
-        String codigo = sc.nextLine();
+            System.out.print("| Codigo: ");
+            String codigo = sc.nextLine();
 
-        System.out.println("| | Docente:");
-        String docente = sc.nextLine();
+            System.out.print("| Docente: ");
+            String docente = sc.nextLine();
 
-        System.out.println("| | Creditos");
-        int creditos = sc.nextInt();
-        sc.nextLine();
+            System.out.print("| Creditos: ");
+            int creditos = sc.nextInt();
+            sc.nextLine();
 
+            listaAsignaturas.add(new Asignatura(nombre, codigo, docente, creditos));
+            System.out.println(">>> GUARDADO EXITOSAMENTE <<<");
 
-        listaAsignaturas.add(new Asignatura(nombre, codigo, docente, creditos));
-        System.out.println("GUARDADO");
+            System.out.print("\n¿Desea registrar otra asignatura? (s/n): ");
+            respuesta = sc.nextLine();
+        } while (respuesta.equalsIgnoreCase("s"));
+
     }
 
     //Metodo para listar asignatura
     public static void ListarAsignatura() {
-
-        System.out.println("==========================================================");
+        System.out.println("\n==========================================================");
         System.out.println("                   LISTA DE ASIGNATURAS                   ");
         System.out.println("==========================================================");
-        for (Asignatura a : listaAsignaturas) {
-            System.out.println("Nombre    : " + a.getNombre());
-            System.out.println("Codigo    : " + a.getCodigo());
-            System.out.println("Doncente  : " + a.getDocente());
-            System.out.println("Creditos  : " + a.getCreditos());
 
+
+        if (listaAsignaturas.isEmpty()) {
+            System.out.println("No hay asignaturas registradas.");
+        } else {
+            for (Asignatura a : listaAsignaturas) {
+                System.out.println("Nombre    : " + a.getNombre());
+                System.out.println("Codigo    : " + a.getCodigo());
+                System.out.println("Docente   : " + a.getDocente());
+                System.out.println("Creditos  : " + a.getCreditos());
+                System.out.println("----------------------------------------------------------");
+            }
         }
+
+
+        System.out.println("\nPresione Enter para volver al menú de asignaturas...");
+        sc.nextLine();
+        sc.nextLine();
+
+
     }
 
     //Metodo para buscar asignatura
@@ -413,7 +430,7 @@ public class App {
         System.out.println("==========================================================");
         System.out.println("                   ACTUALIZAR ASIGNATURA                  ");
         System.out.println("==========================================================");
-        
+
         System.out.println("Ingrese el codigo de la asignatura que desea editar: ");
         String codigo = sc.nextLine();
         boolean actualizada= false;
@@ -442,18 +459,29 @@ public class App {
     }
 
     public static void eliminarAsignatura(){
-        System.out.print("==========================================================");
-        System.out.print("                   ELIMINAR ASIGNATURA"                    );
-        System.out.print("==========================================================");
-        
-        String codigo=sc.nextLine();
-        boolean eliminado= listaAsignaturas.removeIf(a->a.getCodigo().equalsIgnoreCase(codigo));
+        System.out.println("\n==========================================================");
+        System.out.println("                   ELIMINAR ASIGNATURA                    ");
+        System.out.println("==========================================================");
+
+
+        System.out.print("Ingrese el codigo de la asignatura a eliminar: ");
+        String codigo = sc.nextLine();
+
+
+        boolean eliminado = listaAsignaturas.removeIf(a -> a.getCodigo().equalsIgnoreCase(codigo));
+
+
         if(eliminado){
-            System.out.print("Asignatura eliminada con exito");
-        }else{
-            System.out.print("No se encontro ninguna asignatura con ese codigo");
+            System.out.println("Asignatura eliminada con exito.");
+        } else {
+            System.out.println("No se encontro ninguna asignatura con ese codigo.");
         }
+
+
+        System.out.println("\nPresione Enter para volver...");
+        sc.nextLine();
     }
+
 
     /*====================================================================================================== 
 
