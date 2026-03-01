@@ -9,7 +9,7 @@ public class App {
     static ArrayList<Nota> listaNotas = new ArrayList<>();
     static ArrayList<Asignatura> listaAsignaturas = new ArrayList<>();
     static ArrayList<Estudiante> listaEstudiantes = new ArrayList<>();
-    static ArrayList<Estudiante> listaEliminados = new ArrayList<>();
+    static ArrayList<Estudiante> listaEstuEliminados = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
 
     //Metodo Principal
