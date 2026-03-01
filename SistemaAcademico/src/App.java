@@ -316,7 +316,7 @@ public class App {
                     actualizarAsignatura();
                     break;
                 case 5:
-                    System.out.println("");
+                    eliminarAsignatura();
                     break;
                 case 6:
                     System.out.println("Saliendo... Gracias por su tiempo :)");
@@ -355,9 +355,8 @@ public class App {
         System.out.println("GUARDADO");
     }
 
-        //Metodo para listar asignatura
-
-    public void ListarAsignatura() {
+    //Metodo para listar asignatura
+    public static void ListarAsignatura() {
 
         System.out.println("==========================================================");
         System.out.println("                   LISTA DE ASIGNATURAS                   ");
@@ -372,14 +371,15 @@ public class App {
     }
 
     //Metodo para buscar asignatura
-
-    public void buscarAsignatura() {
+    public static Asignatura buscarAsignatura() {
         System.out.println("==========================================================");
         System.out.println("                        BUSCAR ASIGNATURA                 ");
         System.out.println("==========================================================");
+        
+        sc.nextLine();
         System.out.println("Ingrese el codigo que desea buscar: ");
         String codigo = sc.nextLine();
-        boolean encontrada = false;
+
 
         for (Asignatura a : listaAsignaturas) {
             if (a.getCodigo().equalsIgnoreCase(codigo)) {
@@ -387,22 +387,22 @@ public class App {
                 System.out.println("Nombre    : " + a.getNombre());
                 System.out.println("Docente   : " + a.getDocente());
                 System.out.println("Creditos  : " + a.getCreditos());
-                encontrada = true;
-                break;
+                return a;
+
             }
         }
-        if (!encontrada) {
+
             System.out.println("No se encontro ninguna asignatura con codigo: "+ codigo);
-        }
+            return null;
 
     }
 
     //Metodo para actualizar asignatura
-
-    public void actualizarAsignatura(){
+    public static void actualizarAsignatura(){
         System.out.println("==========================================================");
         System.out.println(" ACTUALIZAR ASIGNATURA");
         System.out.println("==========================================================");
+        
         System.out.println("Ingrese el codigo de la asignatura que desea editar: ");
         String codigo = sc.nextLine();
         boolean actualizada= false;
@@ -430,10 +430,11 @@ public class App {
         }
     }
 
-    public void eliminarAsignatura(){
+    public static void eliminarAsignatura(){
         System.out.print("==========================================================");
         System.out.print("                   ELIMINAR ASIGNATURA"                    );
         System.out.print("==========================================================");
+        
         String codigo=sc.nextLine();
         boolean eliminado= listaAsignaturas.removeIf(a->a.getCodigo().equalsIgnoreCase(codigo));
         if(eliminado){
@@ -637,7 +638,6 @@ public class App {
     }
 
     public static void actualizarNota() {
-        Scanner sc = new Scanner(System.in);
 
     System.out.println("\n=====================================");
     System.out.println("        ACTUALIZAR NOTA");
@@ -673,7 +673,6 @@ public class App {
     }
 
     public static void eliminarNota() {
-       Scanner sc = new Scanner(System.in);
 
     System.out.println("\n=====================================");
     System.out.println("        ELIMINAR NOTA");
