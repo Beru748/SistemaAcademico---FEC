@@ -559,7 +559,7 @@ public class App {
     double valor = sc.nextDouble();
 
     Estudiante estudiante = buscarPorCc(codigoEst);
-    Asignatura asignatura = buscarAsignatura(codigoAsig);
+    Asignatura asignatura = buscarAsignaturaPorCodigo(codigoAsig);
 
     if (estudiante != null && asignatura != null) {
 
