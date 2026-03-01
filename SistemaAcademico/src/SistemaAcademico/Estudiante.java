@@ -2,28 +2,32 @@ package SistemaAcademico;
 
 public class Estudiante {
 
-    private String Codigo;
+    private String Cedula;
     private String Nombre;
     private String Apellido;
     private int Edad;
+    private String Carrera;
     private int Semestre;
+    private String correo;
+    private String telefono;
 
-    public Estudiante(String Codigo, String Nombre, String Apellido, int Edad, int Semestre){
-
-        this.Codigo= Codigo;
-        this.Nombre = Nombre;
-        this.Apellido = Apellido;
-        this.Edad = Edad;
-        this.Semestre = Semestre;
-
+    public Estudiante(String cedula, String nombre, String apellido, int edad, String carrera, int semestre, String correo, String telefono) {
+        this.Cedula = cedula;
+        this.Nombre = nombre;
+        this.Apellido = apellido;
+        this.Edad = edad;
+        this.Carrera = carrera;
+        this.Semestre = semestre;
+        this.correo = correo;
+        this.telefono = telefono;
     }
 
-    public String getCodigo(){
-        return Codigo;
+    public String getCedula(){
+        return Cedula;
     }
 
-    public void setCodigo(String Codigo){
-        this.Codigo = Codigo;
+    public void setCedula(String Cedula){
+        this.Cedula = Cedula;
     }
 
     public String getNombre(){
@@ -49,6 +53,14 @@ public class Estudiante {
         this.Edad = Edad;
     }
 
+    public String getCarrera() {
+        return Carrera;
+    }
+
+    public void setCarrera(String carrera) {
+        Carrera = carrera;
+    }
+
     public int getSemestre(){
         return Semestre;
     }
@@ -58,9 +70,32 @@ public class Estudiante {
 
     }
 
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
     @Override
     public String toString() {
-        return ",Codigo: " + Codigo + ",Nombre: " + Nombre + ",Apellido: " + Apellido +
-                ",Edad: " + Edad + ",Semestre: " + Semestre;
+        return "Estudiante" +
+        "Cedula: " + Cedula + 
+        "Nombre: " + Nombre + 
+        "Apellido: " + Apellido + 
+        "Edad: " + Edad + 
+        "Carrera: " + Carrera + 
+        "Semestre: " + Semestre +
+        "Correo: "+ correo +
+        "Telefono: " + telefono;
     }
 }
