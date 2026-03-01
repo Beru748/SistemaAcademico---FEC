@@ -278,7 +278,7 @@ public class App {
         
         if (estudiante != null) {
             listaEstudiantes.remove(estudiante);
-            listaEliminados.add(estudiante);
+            listaEstuEliminados.add(estudiante);
             System.out.println("Estudiante movido a lista de eliminados.");
         } else {
             System.out.println("No se encontro estudiante con cedula: " + cedula);
