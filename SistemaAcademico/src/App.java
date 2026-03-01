@@ -307,7 +307,7 @@ public class App {
             System.out.print("Escoja una opcion: ");
 
             opcionA = sc.nextInt();
-            sc.nextLine(); // LIMPIEZA CLAVE del buffer
+            sc.nextLine();
 
             switch (opcionA) {
                 case 1:
@@ -355,7 +355,7 @@ public class App {
 
             System.out.print("| Creditos: ");
             int creditos = sc.nextInt();
-            sc.nextLine(); // Limpiar el buffer después de un número
+            sc.nextLine();
 
             listaAsignaturas.add(new Asignatura(nombre, codigo, docente, creditos));
             System.out.println(">>> GUARDADO EXITOSAMENTE <<<");
@@ -363,7 +363,7 @@ public class App {
             System.out.print("\n¿Desea registrar otra asignatura? (s/n): ");
             respuesta = sc.nextLine();
         } while (respuesta.equalsIgnoreCase("s"));
-        // Al terminar el bucle, regresa automáticamente al menú de asignatura
+
     }
 
     //Metodo para listar asignatura
@@ -372,7 +372,7 @@ public class App {
         System.out.println("                   LISTA DE ASIGNATURAS                   ");
         System.out.println("==========================================================");
 
-        // 1. Mostrar los datos
+
         if (listaAsignaturas.isEmpty()) {
             System.out.println("No hay asignaturas registradas.");
         } else {
@@ -385,10 +385,10 @@ public class App {
             }
         }
 
-        // 2. PAUSA: Espera a que el usuario presione Enter
+
         System.out.println("\nPresione Enter para volver al menú de asignaturas...");
-        sc.nextLine(); // <--- ESTO LIMPIA EL BUFFER SI VENÍAS DE UN NEXTINT
-        sc.nextLine(); // <--- ESTO HACE LA PAUSA REAL
+        sc.nextLine();
+        sc.nextLine();
 
 
     }
@@ -463,21 +463,21 @@ public class App {
         System.out.println("                   ELIMINAR ASIGNATURA                    ");
         System.out.println("==========================================================");
 
-        // 1. Pedir el código al usuario
+
         System.out.print("Ingrese el codigo de la asignatura a eliminar: ");
         String codigo = sc.nextLine();
 
-        // 2. Buscar y eliminar usando removeIf
+
         boolean eliminado = listaAsignaturas.removeIf(a -> a.getCodigo().equalsIgnoreCase(codigo));
 
-        // 3. Informar resultado
+
         if(eliminado){
             System.out.println("Asignatura eliminada con exito.");
         } else {
             System.out.println("No se encontro ninguna asignatura con ese codigo.");
         }
 
-        // 4. Pausa para volver al menú
+
         System.out.println("\nPresione Enter para volver...");
         sc.nextLine();
     }
