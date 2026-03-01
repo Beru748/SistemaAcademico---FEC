@@ -31,7 +31,8 @@ public class App {
             System.out.println("====================================================");
             System.out.println("| | 1. Gestion de estudiantes.                   | |");
             System.out.println("| | 2. Gestion de asignaturas.                   | |");
-            System.out.println("| | 3. Salir.                                    | |");
+            System.out.println("| | 3. Gestion de notas.                   | |");
+            System.out.println("| | 4. Salir.                                    | |");
             System.out.println("====================================================");
             System.out.println("Escoja una opcion: ");
             opcion = sc.nextInt();
@@ -44,7 +45,10 @@ public class App {
                 case 2:
                     //menuAsignatura();
                     break;
-                case 3:
+                case 3: 
+                    menuNotas();
+                    break;
+                case 4:
                     System.out.println("Saliendo... Gracias por su tiempo :)");
                     break;
 
