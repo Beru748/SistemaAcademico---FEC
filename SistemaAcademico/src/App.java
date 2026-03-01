@@ -292,21 +292,22 @@ public class App {
 =======================================================================================================*/   
 
     public static void menuAsignatura() {
-        System.out.println("==========================================================");
-        System.out.println("                      MENU ASIGNATURA                     ");
-        System.out.println("==========================================================");
-        System.out.println("1. Registrar Asignatura");
-        System.out.println("2. Listar Asignatura");
-        System.out.println("3. Buscar Asignatura");
-        System.out.println("4. Actualizar Asignatura");
-        System.out.println("5. Eliminar Asignatura");
-        System.out.println("6. Salir");
-        System.out.println("==========================================================");
-        System.out.println("Escoja una opcion");
-        Scanner sc = new Scanner(System.in);
-        int opcionA = sc.nextInt();
 
+        int opcionA;
         do {
+            System.out.println("==========================================================");
+            System.out.println("                      MENU ASIGNATURA                     ");
+            System.out.println("==========================================================");
+            System.out.println("1. Registrar Asignatura");
+            System.out.println("2. Listar Asignatura");
+            System.out.println("3. Buscar Asignatura");
+            System.out.println("4. Actualizar Asignatura");
+            System.out.println("5. Eliminar Asignatura");
+            System.out.println("6. Salir");
+            System.out.println("==========================================================");
+            System.out.println("Escoja una opcion");
+            Scanner sc = new Scanner(System.in);
+            opcionA = sc.nextInt();
             switch (opcionA) {
                 case 1:
                     registrarAsignatura();
