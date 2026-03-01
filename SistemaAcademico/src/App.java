@@ -291,7 +291,7 @@ public class App {
 
 =======================================================================================================*/   
 
-    public void menuAsignatura() {
+    public static void menuAsignatura() {
         System.out.println("==========================================================");
         System.out.println("                      MENU ASIGNATURA                     ");
         System.out.println("==========================================================");
@@ -303,6 +303,7 @@ public class App {
         System.out.println("6. Salir");
         System.out.println("==========================================================");
         System.out.println("Escoja una opcion");
+        Scanner sc = new Scanner(System.in);
         int opcionA = sc.nextInt();
 
         do {
@@ -335,10 +336,11 @@ public class App {
 
     //Metodo para registrar asignatura
 
-    public void registrarAsignatura() {
+    public static void registrarAsignatura() {
         System.out.println("==========================================================");
         System.out.println("                    REGISTRO ASIGNATURA                   ");
         System.out.println("==========================================================");
+        Scanner sc = new Scanner(System.in);
         sc.nextLine();
 
         System.out.println("| | Nombre: ");
@@ -375,36 +377,41 @@ public class App {
     }
 
     //Metodo para buscar asignatura
-    public static Asignatura buscarAsignatura() {
+    public static void buscarAsignatura() {
+
         System.out.println("==========================================================");
         System.out.println("                        BUSCAR ASIGNATURA                 ");
         System.out.println("==========================================================");
-        
-        sc.nextLine();
+
         System.out.println("Ingrese el codigo que desea buscar: ");
         String codigo = sc.nextLine();
 
+        Asignatura a = buscarAsignaturaPorCodigo(codigo);
 
+        if (a != null) {
+            System.out.println("ASIGNATURA ENCONTRADA:");
+            System.out.println("Nombre   : " + a.getNombre());
+            System.out.println("Docente  : " + a.getDocente());
+            System.out.println("Creditos : " + a.getCreditos());
+        } else {
+            System.out.println("No se encontro ninguna asignatura con codigo: " + codigo);
+        }
+    }
+
+
+    public static Asignatura buscarAsignaturaPorCodigo(String codigo) {
         for (Asignatura a : listaAsignaturas) {
             if (a.getCodigo().equalsIgnoreCase(codigo)) {
-                System.out.println("ASIGNATURA ENCONTRADA: ");
-                System.out.println("Nombre    : " + a.getNombre());
-                System.out.println("Docente   : " + a.getDocente());
-                System.out.println("Creditos  : " + a.getCreditos());
                 return a;
-
             }
         }
-
-            System.out.println("No se encontro ninguna asignatura con codigo: "+ codigo);
-            return null;
-
+        return null;
     }
 
     //Metodo para actualizar asignatura
     public static void actualizarAsignatura(){
         System.out.println("==========================================================");
-        System.out.println(" ACTUALIZAR ASIGNATURA");
+        System.out.println("                   ACTUALIZAR ASIGNATURA                  ");
         System.out.println("==========================================================");
         
         System.out.println("Ingrese el codigo de la asignatura que desea editar: ");
