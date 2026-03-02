@@ -1,7 +1,6 @@
 import SistemaAcademico.Asignatura;
 import SistemaAcademico.Estudiante;
 import SistemaAcademico.Nota;
-import java.sql.SQLOutput;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -9,14 +8,18 @@ public class App {
     static ArrayList<Nota> listaNotas = new ArrayList<>();
     static ArrayList<Asignatura> listaAsignaturas = new ArrayList<>();
     static ArrayList<Estudiante> listaEstudiantes = new ArrayList<>();
+    //arrays para los eliminados
     static ArrayList<Estudiante> listaEstuEliminados = new ArrayList<>();
+    static ArrayList<Nota> listaNotEliminados = new ArrayList<>();
+    static ArrayList<Asignatura> listaAsigEliminados = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
 
     //Metodo Principal
     public static void main(String[] args) throws Exception {
+        System.out.println("| |                BIENVENIDO A SAU              | |");
+
         mostrarMenu();
-        
-        
+
         sc.close();
     }
 
@@ -31,7 +34,7 @@ public class App {
             System.out.println("====================================================");
             System.out.println("| | 1. Gestion de estudiantes.                   | |");
             System.out.println("| | 2. Gestion de asignaturas.                   | |");
-            System.out.println("| | 3. Gestion de notas.                   | |");
+            System.out.println("| | 3. Gestion de notas.                         | |");
             System.out.println("| | 4. Salir.                                    | |");
             System.out.println("====================================================");
             System.out.println("Escoja una opcion: ");
@@ -43,7 +46,7 @@ public class App {
                     menuEstudiante();
                     break;
                 case 2:
-                    //menuAsignatura();
+                    menuAsignatura();
                     break;
                 case 3: 
                     menuNotas();
@@ -56,7 +59,7 @@ public class App {
                     System.out.println("La opcion es invalida. Intente nuevamente.");
                     break;
             }
-        } while (opcion != 3);
+        } while (opcion != 4);
     }
 
     //Metodo para mostrar el menu de los estudiantes
@@ -114,7 +117,7 @@ public class App {
 //Metodo para registrar estudiantes nuevos
 
     public static void registrarEstudiante() {
-        sc.nextLine();
+        //sc.nextLine();
         System.out.println("====================================================");
         System.out.println("| |          REGISTRO DE ESTUDIANTE              | |");
         System.out.println("====================================================");
@@ -170,7 +173,14 @@ public class App {
         System.out.println("====================================");
 
         for (Estudiante e : listaEstudiantes) {
-            System.out.println(e.toString());
+            System.out.println("Nombre: " + e.getNombre());
+            System.out.println("Apellido: " + e.getApellido());
+            System.out.println("Cedula: " + e.getCedula());
+            System.out.println("Edad: " + e.getEdad());
+            System.out.println("Telefono: " + e.getTelefono());
+            System.out.println("Carrera: " + e.getCarrera());
+            System.out.println("Semestre: " + e.getSemestre());
+            System.out.println("Correo: " + e.getCorreo());
             System.out.println("====================================");
         }
         System.out.println("\nPresione Enter para volver al menú...");
@@ -491,7 +501,7 @@ public class App {
     
     public static void menuNotas(){
     
-    int opcion;
+    int opcionN;
 
     do {
         System.out.println("\n=====================================");
@@ -502,14 +512,13 @@ public class App {
         System.out.println("3. Actualizar nota");
         System.out.println("4. Eliminar nota");
         System.out.println("5. Listar notas");
-        System.out.println("0. Salir");
+        System.out.println("6. Salir");
         System.out.println("=====================================");
         System.out.print("Seleccione una opcion: ");
-        
-        
-        opcion = Integer.parseInt(sc.nextLine()); 
+        opcionN = sc.nextInt();
+        sc.nextLine();
 
-        switch (opcion) {
+        switch (opcionN) {
 
             case 1:
                 registrarNota();
@@ -517,37 +526,37 @@ public class App {
 
             case 2:
                 System.out.print("Codigo estudiante: ");
-    String codigoEst = sc.nextLine();
+                String codigoEst = sc.nextLine();
 
-    Estudiante estudiante = buscarPorCc(codigoEst);
+                Estudiante estudiante = buscarPorCc(codigoEst);
 
-    if (estudiante == null) {
-        System.out.println("El estudiante no existe.");
-        break;
-    }
+                if (estudiante == null) {
+                    System.out.println("El estudiante no existe.");
+                    break;
+                }
 
-    System.out.print("Codigo asignatura: ");
-    String codigoAsig = sc.nextLine();
+                System.out.print("Codigo asignatura: ");
+                String codigoAsig = sc.nextLine();
 
-    Asignatura asignatura = buscarAsignaturaPorCodigo(codigoAsig);
+                Asignatura asignatura = buscarAsignaturaPorCodigo(codigoAsig);
 
-    if (asignatura == null) {
-        System.out.println("La asignatura no existe.");
-        break;
-    }
+                if (asignatura == null) {
+                    System.out.println("La asignatura no existe.");
+                    break;
+                }
 
-    System.out.print("Periodo: ");
-    String periodo = sc.nextLine();
+                System.out.print("Periodo: ");
+                String periodo = sc.nextLine();
 
-    Nota nota = buscarNota(codigoEst, codigoAsig, periodo);
+                Nota nota = buscarNota(codigoEst, codigoAsig, periodo);
 
-    if (nota != null) {
-        mostrarNotaBonita(nota);
-    } else {
-        System.out.println("No existe nota registrada para ese periodo.");
-    }
+                if (nota != null) {
+                    mostrarNotaBonita(nota);
+                } else {
+                    System.out.println("No existe nota registrada para ese periodo.");
+                }
 
-    break;
+                break;
 
             case 3:
                 actualizarNota();
@@ -561,7 +570,7 @@ public class App {
                 listarNotasPorAsignatura();
                 break;
 
-            case 0:
+            case 6:
                 System.out.println("Saliendo del sistema...");
                 break;
 
@@ -569,7 +578,7 @@ public class App {
                 System.out.println("Opcion invalida.");
         }
 
-    } while (opcion != 0);
+    } while (opcionN != 6);
 }
     
     public static void mostrarNotaBonita(Nota n) {
@@ -602,8 +611,8 @@ public class App {
     String periodo = sc.nextLine();
 
     System.out.print("Nota              : ");
-double valor = sc.nextDouble();
-sc.nextLine();
+    double valor = sc.nextDouble();
+    sc.nextLine();
 
 if (valor < 0 || valor > 5) {
     System.out.println("-------------------------------------");
@@ -768,7 +777,6 @@ if (nuevaNota < 0 || nuevaNota > 5) {
     System.out.println("                       ELIMINAR NOTA                      ");
     System.out.println("==========================================================");
 
-  
     System.out.print("Codigo estudiante : ");
     String codigoEst = sc.nextLine();
 
@@ -792,7 +800,6 @@ if (nuevaNota < 0 || nuevaNota > 5) {
         System.out.println("\nNo se encontro ninguna nota con esos datos.");
     }
 
-   
     System.out.println("\nPresione Enter para volver...");
     sc.nextLine();
 }
